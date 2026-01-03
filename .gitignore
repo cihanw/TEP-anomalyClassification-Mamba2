@@ -1,0 +1,15 @@
+# Virtual Environment
+pyTorch/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data (Too large for git)
+data/
+
+# OS Specific
+.DS_Store
+Thumbs.db
