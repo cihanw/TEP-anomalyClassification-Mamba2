@@ -1,5 +1,7 @@
 # TEP Anomaly Classification with Mamba2
 
+> **Note**: For access to the completely raw version of the dataset, please refer to: https://github.com/camaramm/tennessee-eastman-profBraatz
+
 ## Project Overview
 This project focuses on anomaly classification using the Mamba2 architecture on the Tennessee Eastman Process (TEP) dataset.
 
@@ -37,10 +39,6 @@ The model consists of 4 fixed-size Mamba blocks.
 
 To further improve performance, the following steps are recommended:
 
-1. **Input Augmentation with Derivatives**: 
-   Instead of using the raw input shape of (Batch_Size, Window_length, 52), calculate the 1st derivative of the variables and append them. This changes the input shape to **(Batch_Size, Window_length, 104)**. This provides the model with trend information.
-
-2. **Two-Stage Approach**:
-   Literature suggests that a two-step approach is more effective:
-   - **Step 1**: Train an **Autoencoder** specifically for Anomaly Detection (binary classification: normal vs. anomaly).
-   - **Step 2**: Train a separate **Classifier** model for 20-class Anomaly Classification.
+The current model utilizes significantly fewer parameters while achieving performance comparable to transformer-based models found in the literature. However, to improve class 0 accuracy, it is recommended to train two separate models:
+1. An autoencoder for anomaly detection.
+2. A 20-class classifier for anomaly classification.
